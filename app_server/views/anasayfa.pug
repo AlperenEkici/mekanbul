@@ -1,80 +1,25 @@
 extends layout
+include fonksiyonlar/yildiz
 block content
     #banner.page-header 
         .row 
             .col-lg-6 
                 h1 
-                    |  Mekan Bul 
-                    small &nbsp; Civardaki mekanları keşfet!
-    .row   
-        .row.list-group 
-        .col-xs-12.col-sm-12 
-            .col-xs-12.list-group-item 
-                h4 
-                    a(href='/mekan') Bilgisayar Müh 
-                    small &nbsp;
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star-empty 
-                span.badge.pull-right.badge-default 10km
-                p.address SDÜ Batı Kampüsü
-                p 
-                    span.label.label-warning Web Teknolojileri
-                    |  &nbsp;
-                    span.label.label-warning Sinan hoca
-    .row   
-        .row.list-group 
-        .col-xs-12.col-sm-12 
-            .col-xs-12.list-group-item 
-                h4 
-                    a(href='/mekan') Starbucks  
-                    small &nbsp;
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                span.badge.pull-right.badge-default 15km
-                p.address Centrium Garden Avm
-                p 
-                    span.label.label-warning Kahve
-                    |  &nbsp;
-                    span.label.label-warning Pasta              
-    .row   
-        .row.list-group 
-        .col-xs-12.col-sm-12 
-            .col-xs-12.list-group-item 
-                h4 
-                    a(href='/mekan') Gloria Jean's 
-                    small &nbsp;
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star-empty 
-                span.badge.pull-right.badge-default 500m
-                p.address SDÜ Dogu Kampüsü Avm
-                p 
-                    span.label.label-warning Kahve
-                    |  &nbsp;
-                    span.label.label-warning Pasta               
-    .row   
-        .row.list-group 
-        .col-xs-12.col-sm-12 
-            .col-xs-12.list-group-item 
-                h4 
-                    a(href='/mekan') Beygir Pub 
-                    small &nbsp;
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star 
-                    span.glyphicon.glyphicon-star  
-                    span.glyphicon.glyphicon-star-empty 
-                    span.glyphicon.glyphicon-star-empty  
-                span.badge.pull-right.badge-default 15km
-                p.address Kafeler Caddesi
-                p 
-                    span.label.label-warning Kokteyl
-                    |  &nbsp;
-                    span.label.label-warning Bira
+                    |  #{sayfaBaslik.siteAd}
+                    small &nbsp; #{sayfaBaslik.slogan}
+    .row  
+        each mekan in mekanlar  
+            .row.list-group 
+            .col-xs-12.col-sm-12 
+                .col-xs-12.list-group-item 
+                    h4 
+                        a(href='/mekan') #{mekan.ad}
+                        small &nbsp;
+                        +puanOlustur(mekan.puan)
+                    span.badge.pull-right.badge-default #{mekan.mesafe}
+                    p.address #{mekan.adres}
+                    p 
+                        each imkan in mekan.imkanlar
+                            span.label.label-warning #{imkan}
+                            |  &nbsp;              
+    
