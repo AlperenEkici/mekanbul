@@ -39,19 +39,19 @@ block content
               img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
   .row 
     .col-xs-12 
-      panel.panel-primary
+      .panel.panel-primary
         .panel-heading
           a.btn.btn-default.pull-right(href='/mekan/yorum/yeni') Yorum Ekle
-          h2.panel-tittle Müşteri Yorumları
+          h2.panel-title Müşteri Yorumları
         .panel-body.review-container
           each yorum in mekanDetay.yorumlar
             .row 
-              .review 
-                 .well.well-sm.review-header 
-                    span.rating
-                      +puanOlustur(yorum.puan)
-                      | &nbsp;
-                    span.review-author #{yorum.yorumYapan}
-                    small.reviewTimestamp &nbsp; #{yorum.tarih}
-                    .col-xs-12
-                      p= yorum.yorumMetni
+              .review
+                .well.well-sm-review-header
+                  span.rating
+                  +puanOlustur(mekanDetay.puan)
+                  span.review-author #{yorum.yorumYapan}
+                  small.reviewTimestamp &nbsp; #{yorum.tarih}
+                .col-xs-12 
+                  p #{yorum.yorumMetni}
+                      
